@@ -12,10 +12,11 @@
 		E11D99012698D26200C67A98 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11D99002698D26200C67A98 /* AppDelegate.swift */; };
 		E11D99032698D26200C67A98 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11D99022698D26200C67A98 /* SceneDelegate.swift */; };
 		E11D99052698D26200C67A98 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11D99042698D26200C67A98 /* ViewController.swift */; };
-		E11D99082698D26200C67A98 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E11D99062698D26200C67A98 /* Main.storyboard */; };
+		E11D99082698D26200C67A98 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E11D99062698D26200C67A98 /* Home.storyboard */; };
 		E11D990A2698D26600C67A98 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E11D99092698D26600C67A98 /* Assets.xcassets */; };
 		E11D990D2698D26600C67A98 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E11D990B2698D26600C67A98 /* LaunchScreen.storyboard */; };
 		E11D99182698D26600C67A98 /* MilkyWayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11D99172698D26600C67A98 /* MilkyWayTests.swift */; };
+		E11D99362698DA4500C67A98 /* Detail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E11D99352698DA4500C67A98 /* Detail.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,13 +39,14 @@
 		E11D99002698D26200C67A98 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E11D99022698D26200C67A98 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		E11D99042698D26200C67A98 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		E11D99072698D26200C67A98 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		E11D99072698D26200C67A98 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Home.storyboard; sourceTree = "<group>"; };
 		E11D99092698D26600C67A98 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E11D990C2698D26600C67A98 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E11D990E2698D26600C67A98 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E11D99132698D26600C67A98 /* MilkyWayTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MilkyWayTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E11D99172698D26600C67A98 /* MilkyWayTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilkyWayTests.swift; sourceTree = "<group>"; };
 		E11D99192698D26600C67A98 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E11D99352698DA4500C67A98 /* Detail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Detail.storyboard; sourceTree = "<group>"; };
 		EE9D3CDD823170A4A5D15219 /* Pods_MilkyWay.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MilkyWay.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -111,13 +113,12 @@
 		E11D98FF2698D26200C67A98 /* MilkyWay */ = {
 			isa = PBXGroup;
 			children = (
+				E11D99342698DA1E00C67A98 /* Network */,
+				E11D99322698DA0D00C67A98 /* Home */,
+				E11D99332698DA1300C67A98 /* Detail */,
 				E11D99002698D26200C67A98 /* AppDelegate.swift */,
 				E11D99022698D26200C67A98 /* SceneDelegate.swift */,
-				E11D99042698D26200C67A98 /* ViewController.swift */,
-				E11D99062698D26200C67A98 /* Main.storyboard */,
-				E11D99092698D26600C67A98 /* Assets.xcassets */,
-				E11D990B2698D26600C67A98 /* LaunchScreen.storyboard */,
-				E11D990E2698D26600C67A98 /* Info.plist */,
+				E11D99312698D9FF00C67A98 /* Resources */,
 			);
 			path = MilkyWay;
 			sourceTree = "<group>";
@@ -131,6 +132,40 @@
 			path = MilkyWayTests;
 			sourceTree = "<group>";
 		};
+		E11D99312698D9FF00C67A98 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				E11D99092698D26600C67A98 /* Assets.xcassets */,
+				E11D990B2698D26600C67A98 /* LaunchScreen.storyboard */,
+				E11D990E2698D26600C67A98 /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		E11D99322698DA0D00C67A98 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				E11D99062698D26200C67A98 /* Home.storyboard */,
+				E11D99042698D26200C67A98 /* ViewController.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		E11D99332698DA1300C67A98 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				E11D99352698DA4500C67A98 /* Detail.storyboard */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		E11D99342698DA1E00C67A98 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -142,6 +177,7 @@
 				E11D98F92698D26200C67A98 /* Sources */,
 				E11D98FA2698D26200C67A98 /* Frameworks */,
 				E11D98FB2698D26200C67A98 /* Resources */,
+				E11D99302698D90000C67A98 /* Swiftlint */,
 			);
 			buildRules = (
 			);
@@ -215,7 +251,8 @@
 			files = (
 				E11D990D2698D26600C67A98 /* LaunchScreen.storyboard in Resources */,
 				E11D990A2698D26600C67A98 /* Assets.xcassets in Resources */,
-				E11D99082698D26200C67A98 /* Main.storyboard in Resources */,
+				E11D99082698D26200C67A98 /* Home.storyboard in Resources */,
+				E11D99362698DA4500C67A98 /* Detail.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,6 +310,24 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		E11D99302698D90000C67A98 /* Swiftlint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = Swiftlint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\" autocorrect\n\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -305,12 +360,12 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		E11D99062698D26200C67A98 /* Main.storyboard */ = {
+		E11D99062698D26200C67A98 /* Home.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				E11D99072698D26200C67A98 /* Base */,
 			);
-			name = Main.storyboard;
+			name = Home.storyboard;
 			sourceTree = "<group>";
 		};
 		E11D990B2698D26600C67A98 /* LaunchScreen.storyboard */ = {
