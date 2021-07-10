@@ -2,7 +2,7 @@ import Foundation
 import XCTest
 
 func readJSONData(_ fileName: String) -> Data? {
-    guard let path = Bundle(for: NasaCollectionTests.classForCoder())
+    guard let path = Bundle(for: NasaResponseTests.classForCoder())
             .path(forResource: fileName, ofType: "json") else {
         XCTFail("Failed to get path for file: \(fileName)")
         return nil
