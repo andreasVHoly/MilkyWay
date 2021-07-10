@@ -28,6 +28,9 @@
 		E11D99532698F1C600C67A98 /* Endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11D99522698F1C600C67A98 /* Endpoints.swift */; };
 		E11D99562698F67700C67A98 /* Bundle+getValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11D99552698F67700C67A98 /* Bundle+getValue.swift */; };
 		E11D995A269A095D00C67A98 /* EndpointTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11D9959269A095D00C67A98 /* EndpointTests.swift */; };
+		E11D9971269A23D100C67A98 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11D9970269A23D100C67A98 /* Colors.swift */; };
+		E11D9973269A23F200C67A98 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E11D9972269A23F200C67A98 /* Colors.xcassets */; };
+		E11D9976269A254A00C67A98 /* ColorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11D9975269A254900C67A98 /* ColorTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +72,9 @@
 		E11D99522698F1C600C67A98 /* Endpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoints.swift; sourceTree = "<group>"; };
 		E11D99552698F67700C67A98 /* Bundle+getValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+getValue.swift"; sourceTree = "<group>"; };
 		E11D9959269A095D00C67A98 /* EndpointTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointTests.swift; sourceTree = "<group>"; };
+		E11D9970269A23D100C67A98 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		E11D9972269A23F200C67A98 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		E11D9975269A254900C67A98 /* ColorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorTests.swift; sourceTree = "<group>"; };
 		EE9D3CDD823170A4A5D15219 /* Pods_MilkyWay.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MilkyWay.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -137,6 +143,7 @@
 			isa = PBXGroup;
 			children = (
 				E11D993A2698DBCE00C67A98 /* Models */,
+				E11D996F269A23C600C67A98 /* Theme */,
 				E11D99342698DA1E00C67A98 /* Network */,
 				E11D99322698DA0D00C67A98 /* Home */,
 				E11D99332698DA1300C67A98 /* Detail */,
@@ -151,6 +158,7 @@
 		E11D99162698D26600C67A98 /* MilkyWayTests */ = {
 			isa = PBXGroup;
 			children = (
+				E11D9974269A253D00C67A98 /* Theme */,
 				E11D99402698E38F00C67A98 /* Json */,
 				E11D993D2698E35E00C67A98 /* Models */,
 				E11D99392698DAC000C67A98 /* Network */,
@@ -163,6 +171,7 @@
 			isa = PBXGroup;
 			children = (
 				E11D99092698D26600C67A98 /* Assets.xcassets */,
+				E11D9972269A23F200C67A98 /* Colors.xcassets */,
 				E11D990B2698D26600C67A98 /* LaunchScreen.storyboard */,
 				E11D990E2698D26600C67A98 /* Info.plist */,
 			);
@@ -237,6 +246,23 @@
 				E11D99552698F67700C67A98 /* Bundle+getValue.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		E11D996F269A23C600C67A98 /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				E11D9970269A23D100C67A98 /* Colors.swift */,
+				E11D997B269A280000C67A98 /* Theme.swift */,
+			);
+			path = Theme;
+			sourceTree = "<group>";
+		};
+		E11D9974269A253D00C67A98 /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				E11D9975269A254900C67A98 /* ColorTests.swift */,
+			);
+			path = Theme;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -327,6 +353,7 @@
 				E11D990A2698D26600C67A98 /* Assets.xcassets in Resources */,
 				E11D99082698D26200C67A98 /* Home.storyboard in Resources */,
 				E11D99362698DA4500C67A98 /* Detail.storyboard in Resources */,
+				E11D9973269A23F200C67A98 /* Colors.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -414,6 +441,7 @@
 			files = (
 				E11D99532698F1C600C67A98 /* Endpoints.swift in Sources */,
 				E11D99052698D26200C67A98 /* ViewController.swift in Sources */,
+				E11D9971269A23D100C67A98 /* Colors.swift in Sources */,
 				E11D99562698F67700C67A98 /* Bundle+getValue.swift in Sources */,
 				E11D99512698EEA700C67A98 /* NasaResponse.swift in Sources */,
 				E11D99012698D26200C67A98 /* AppDelegate.swift in Sources */,
@@ -430,6 +458,7 @@
 				E11D993F2698E36A00C67A98 /* NasaResponseTests.swift in Sources */,
 				E11D99472698E41B00C67A98 /* JsonReader.swift in Sources */,
 				E11D995A269A095D00C67A98 /* EndpointTests.swift in Sources */,
+				E11D9976269A254A00C67A98 /* ColorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

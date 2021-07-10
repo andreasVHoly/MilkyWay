@@ -7,7 +7,6 @@ protocol EndpointProtocol {
 }
 
 enum Endpoint: EndpointProtocol {
-    // MARK: GET
     case getImages(Int)
 
     var base: String {
