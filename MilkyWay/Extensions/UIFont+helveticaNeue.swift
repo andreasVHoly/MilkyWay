@@ -4,7 +4,7 @@ extension UIFont {
 
     enum FontWeight: String {
         case bold = "Bold"
-        case regular = "Light" // TODO: import custom font
+        case regular = "Light"
     }
 
     /**
