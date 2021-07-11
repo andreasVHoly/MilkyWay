@@ -24,27 +24,12 @@ class HomeViewModelTests: XCTestCase {
 
         let exp = expectation(description: "test_getImageData_success")
 
-        sut.getImageData().sink { state in
-            guard case HomeViewState.success = state else { return }
+        sut.getImageData() { error in
+            XCTAssertNil(error)
             XCTAssertEqual(self.sut.rows, 2)
             XCTAssertNotNil(self.sut.getImageViewModel(at: IndexPath(row: 0, section: 0)))
             exp.fulfill()
-        }.store(in: &cancellables)
-
-        wait(for: [exp], timeout: 0.1)
-    }
-
-    func test_getImageData_successEmpty() {
-
-        mockAPI.response = NasaResponse(collection: NasaCollection(items: []))
-        let exp = expectation(description: "test_getImageData_successEmpty")
-
-        sut.getImageData().sink { state in
-            guard case HomeViewState.empty = state else { return }
-            XCTAssertEqual(self.sut.rows, 0)
-            XCTAssertNil(self.sut.getImageViewModel(at: IndexPath(row: 0, section: 0)))
-            exp.fulfill()
-        }.store(in: &cancellables)
+        }
 
         wait(for: [exp], timeout: 0.1)
     }
@@ -54,12 +39,12 @@ class HomeViewModelTests: XCTestCase {
         mockAPI.error = NetworkError.serverError
         let exp = expectation(description: "test_getImageData_error")
 
-        sut.getImageData().sink { state in
-            guard case HomeViewState.failure = state else { return }
+        sut.getImageData() { error in
+            XCTAssertEqual(error, .serverError)
             XCTAssertEqual(self.sut.rows, 0)
             XCTAssertNil(self.sut.getImageViewModel(at: IndexPath(row: 0, section: 0)))
             exp.fulfill()
-        }.store(in: &cancellables)
+        }
 
         wait(for: [exp], timeout: 0.1)
     }

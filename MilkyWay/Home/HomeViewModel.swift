@@ -1,36 +1,14 @@
 import Foundation
 import Combine
 
-typealias HomeOutput = AnyPublisher<HomeViewState, Never>
-
-enum HomeViewState {
-    case loading
-    case success
-    case empty
-    case failure(error: Error)
-}
-
-extension HomeViewState: Equatable {
-    static func == (lhs: HomeViewState, rhs: HomeViewState) -> Bool {
-        switch (lhs, rhs) {
-        case (.loading, .loading): return true
-        case (.success, .success): return true
-        case (.empty, .empty): return true
-        case (.failure, .failure): return true
-        default: return false
-        }
-    }
-}
-
 protocol HomeViewModelable {
     var rows: Int { get }
     func getImageViewModel(at indexPath: IndexPath) -> NasaImageViewModel?
-    func getImageData() -> HomeOutput
+    func getImageData(completion: @escaping (NetworkError?) -> Void)
 }
 
 class HomeViewModel: HomeViewModelable {
 
-    private var cancellables = Set<AnyCancellable>()
     private var images = [NasaImageViewModel]()
     private let api: API
     private let imageLoader: ImageLoadable
@@ -49,29 +27,17 @@ class HomeViewModel: HomeViewModelable {
         return images[indexPath.row]
     }
 
-    func getImageData() -> HomeOutput {
-        cancellables.forEach { $0.cancel() }
-        cancellables.removeAll()
-
-        let defaultState: HomeOutput = Just(.loading).eraseToAnyPublisher()
-        let apiState = api.getImages(page: 1)
-            .map { [unowned self] result -> HomeViewState in
-                switch result {
-                case .success(let response) where response.collection.items.isEmpty:
-                    return .empty
-                case .success(let response):
-                    self.images = response.collection.items.compactMap { [unowned self] model in
-                        NasaImageViewModel(model: model,
-                                           image: self.imageLoader.downloadImage(from: model.links.first?.imageUrl)) }
-                    return .success
-                case .failure(let error):
-                    return .failure(error: error)
-                }
+    func getImageData(completion: @escaping (NetworkError?) -> Void) {
+        api.getImages(page: 1) { result in
+            switch result {
+            case .success(let response):
+                self.images = response.collection.items.compactMap { [unowned self] model in
+                    NasaImageViewModel(model: model,
+                                       image: self.imageLoader.downloadImage(from: model.links.first?.imageUrl)) }
+                completion(nil)
+            case .failure(let error):
+                completion(error)
             }
-            .eraseToAnyPublisher()
-
-        return Publishers.Merge(defaultState, apiState)
-            .removeDuplicates()
-            .eraseToAnyPublisher()
+        }
     }
 }
