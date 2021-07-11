@@ -4,19 +4,17 @@ import Combine
 
 class TestableNetworkClient: NetworkClient {
 
-    var error: Error?
+    var error: NetworkError?
     var responseData: NasaResponse?
 
-    override func get<T: Decodable>(endpoint: EndpointProtocol) -> AnyPublisher<T, Error> {
+    override func get<T>(endpoint: EndpointProtocol, completion: @escaping (Result<T, NetworkError>) -> Void) where T : Decodable {
         if let error = error {
-            return Fail(error: error).eraseToAnyPublisher()
+            completion(.failure(error))
         } else if let data = responseData as? T {
-            return Just(data)
-                .catch { _ in Empty().eraseToAnyPublisher() }
-                .eraseToAnyPublisher()
+            completion(.success(data))
         } else {
             XCTFail("Failed to return")
-            return Fail(error: NetworkError.noResponse).eraseToAnyPublisher()
+            completion(.failure(.noResponse))
         }
     }
 }

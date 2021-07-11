@@ -3,14 +3,14 @@ import Combine
 
 class TestableAPI: API {
 
-    var error: Error?
+    var error: NetworkError?
     var response = NasaResponse.testable()
 
-    func getImages(page: Int) -> ImageResponse {
+    func getImages(page: Int, completion: @escaping (Result<NasaResponse, NetworkError>) -> Void) {
         if let error = error {
-            return Just(.failure(error)).eraseToAnyPublisher()
+            completion(.failure(error))
         } else {
-            return Just(.success(response)).eraseToAnyPublisher()
+            completion(.success(response))
         }
     }
 }

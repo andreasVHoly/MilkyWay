@@ -209,12 +209,12 @@
 		E11D99162698D26600C67A98 /* MilkyWayTests */ = {
 			isa = PBXGroup;
 			children = (
-				E11D9989269B06E900C67A98 /* Home */,
+				E11D99402698E38F00C67A98 /* Json */,
 				E11D9984269A2FBF00C67A98 /* Utils */,
 				E11D9974269A253D00C67A98 /* Theme */,
-				E11D99402698E38F00C67A98 /* Json */,
 				E11D993D2698E35E00C67A98 /* Models */,
 				E11D99392698DAC000C67A98 /* Network */,
+				E11D9989269B06E900C67A98 /* Home */,
 				E11D9961269A103400C67A98 /* Testables */,
 				E11D99192698D26600C67A98 /* Info.plist */,
 			);
@@ -255,8 +255,8 @@
 		E11D99342698DA1E00C67A98 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				E11D995B269A0DC600C67A98 /* MilkyAPI.swift */,
 				E11D99372698DAB100C67A98 /* NetworkClient.swift */,
+				E11D995B269A0DC600C67A98 /* MilkyAPI.swift */,
 				E11D99522698F1C600C67A98 /* Endpoints.swift */,
 				E11D99572698FAE500C67A98 /* NetworkError.swift */,
 			);

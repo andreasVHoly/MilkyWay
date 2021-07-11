@@ -19,7 +19,7 @@ class MilkyAPITests: XCTestCase {
         client.responseData = NasaResponse.testable()
         let exp = expectation(description: "testGetImages_success")
 
-        _ = sut.getImages(page: 1).sink(receiveValue: { result in
+        sut.getImages(page: 1) { result in
             switch result {
             case .success(let response):
                 XCTAssertEqual(response.collection.items.count, 2)
@@ -27,7 +27,7 @@ class MilkyAPITests: XCTestCase {
                 XCTFail(error.localizedDescription)
             }
             exp.fulfill()
-        }).store(in: &cancellables)
+        }
 
         wait(for: [exp], timeout: 0.1)
     }
@@ -37,16 +37,15 @@ class MilkyAPITests: XCTestCase {
         client.error = NetworkError.authenticationError
         let exp = expectation(description: "testGetImages_fail")
 
-        let output = sut.getImages(page: 1).sink(receiveValue: { result in
+        sut.getImages(page: 1) { result in
             switch result {
-            case .success(let response):
+            case .success:
                 XCTFail("Should have an error")
-                XCTAssertEqual(response.collection.items.count, 2)
             case .failure(let error):
-                XCTAssertTrue(error is NetworkError)
+                XCTAssertEqual(error, .authenticationError)
             }
             exp.fulfill()
-        }).store(in: &cancellables)
+        }
 
         wait(for: [exp], timeout: 0.1)
     }

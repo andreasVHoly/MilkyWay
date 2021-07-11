@@ -6,6 +6,7 @@ class MockURLSession: URLSession {
 
     var data: Data?
     var error: Error?
+    var response: URLResponse?
 
     func loadJsonFile(_ fileName: String) {
         data = MockURLSession.loadJsonFile(fileName)
@@ -26,15 +27,28 @@ class MockURLSession: URLSession {
         return nil
     }
 
-    func setJsonData<T>(_ encodable: T) where T: Encodable {
-        let jsonEncoder = JSONEncoder()
-        do {
-            let jsonData = try jsonEncoder.encode(encodable)
-            let jsonString = String(data: jsonData, encoding: .utf8)
-            let testDataAsBase64 = jsonString!.data(using: .utf8)!.base64EncodedData()
-            self.data = Data(base64Encoded: testDataAsBase64)
-        } catch {
-            XCTFail("Failed to set mock data")
-        }
+    override func dataTask(with url: URLRequest, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
+        return MockDataTask(data: self.data,
+                            error: self.error,
+                            response: self.response,
+                            completion: completionHandler)
+    }
+}
+
+class MockDataTask: URLSessionDataTask {
+    var completion: ((Data?, URLResponse?, Error?) -> Void)?
+    var testData: Data?
+    let testResponse: URLResponse
+    var testError: Error?
+
+    init(data: Data?, error: Error?, response: URLResponse?, completion: @escaping (Data?, URLResponse?, Error?) -> Void) {
+        self.testData = data
+        self.testError = error
+        self.testResponse = response ?? HTTPURLResponse(url: URL(string: "http://test.com")!, statusCode: 200, httpVersion: nil, headerFields: nil)!
+        self.completion = completion
+    }
+
+    override func resume() {
+        completion?(testData, testResponse, testError)
     }
 }

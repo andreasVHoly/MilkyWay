@@ -12,38 +12,134 @@ struct InvalidTestEndpoint: EndpointProtocol {
 class NetworkClientTests: XCTestCase {
 
     var sut: NetworkClient!
+    var mockSession: MockURLSession!
 
     override func setUp() {
         super.setUp()
-        sut = NetworkClient(session: MockURLSession())
+        mockSession = MockURLSession()
+        sut = NetworkClient(session: mockSession)
     }
 
-    func testCreate_invalidUrl() {
+    func testGet_invalidUrl() {
 
         let exp = expectation(description: "testCreate_invalidUrl")
 
-        let result = sut.get(endpoint: InvalidTestEndpoint())
-            .map { (value: NasaResponse) in
-                XCTFail("Received success")
-                exp.fulfill()
-                return .success(value)
+        sut.get(endpoint: InvalidTestEndpoint()) { (result: Result<NasaResponse, NetworkError>) in
+            switch result {
+            case .success:
+                XCTFail()
+            case .failure(let error):
+                XCTAssertEqual(error, .invalidURL)
             }
-            .catch { error -> AnyPublisher<Result<NasaResponse, Error>, Never> in
-                guard let error = error as? NetworkError,
-                      case NetworkError.invalidURL = error else {
-                    XCTFail("Invalid error thrown ")
-                    return Just(.failure(error))
-                        .catch { _ in Empty().eraseToAnyPublisher() }
-                        .eraseToAnyPublisher()
-                }
-                exp.fulfill()
-                return Just(.failure(error))
-                    .catch { _ in Empty().eraseToAnyPublisher() }
-                    .eraseToAnyPublisher()
+            exp.fulfill()
+        }
+
+        wait(for: [exp], timeout: 0.1)
+    }
+
+    func testGet_failure_400() {
+
+        mockSession.data = Data()
+        mockSession.response = HTTPURLResponse(url: URL(string: "http://test.com")!,
+                                               statusCode: 400,
+                                               httpVersion: nil,
+                                               headerFields: nil)
+        let exp = expectation(description: "testGet_failure_400")
+
+        sut.get(endpoint: Endpoint.getImages(1)) { (result: Result<NasaResponse, NetworkError>) in
+            switch result {
+            case .success:
+                XCTFail()
+            case .failure(let error):
+                XCTAssertEqual(error, .authenticationError)
             }
-            .receive(on: DispatchQueue.main)
-            .eraseToAnyPublisher()
-        _ = result.sink { _ in }
+            exp.fulfill()
+        }
+
+        wait(for: [exp], timeout: 0.1)
+    }
+
+    func testGet_failure_500() {
+
+        mockSession.data = Data()
+        mockSession.response = HTTPURLResponse(url: URL(string: "http://test.com")!,
+                                               statusCode: 500,
+                                               httpVersion: nil,
+                                               headerFields: nil)
+        let exp = expectation(description: "testGet_failure_500")
+
+        sut.get(endpoint: Endpoint.getImages(1)) { (result: Result<NasaResponse, NetworkError>) in
+            switch result {
+            case .success:
+                XCTFail()
+            case .failure(let error):
+                XCTAssertEqual(error, .serverError)
+            }
+            exp.fulfill()
+        }
+
+        wait(for: [exp], timeout: 0.1)
+    }
+
+    func testGet_failure_other() {
+
+        mockSession.error = NetworkError.authenticationError
+        mockSession.data = Data()
+        mockSession.response = HTTPURLResponse(url: URL(string: "http://test.com")!,
+                                               statusCode: 600,
+                                               httpVersion: nil,
+                                               headerFields: nil)
+        let exp = expectation(description: "testGet_failure_other")
+
+        sut.get(endpoint: Endpoint.getImages(1)) { (result: Result<NasaResponse, NetworkError>) in
+            switch result {
+            case .success:
+                XCTFail()
+            case .failure(let error):
+                XCTAssertEqual(error, .networkError(NetworkError.authenticationError))
+            }
+            exp.fulfill()
+        }
+
+        wait(for: [exp], timeout: 0.1)
+    }
+
+    func testGet_noResponse() {
+
+        mockSession.data = nil
+        mockSession.response = HTTPURLResponse(url: URL(string: "http://test.com")!,
+                                               statusCode: 1,
+                                               httpVersion: nil,
+                                               headerFields: nil)
+        let exp = expectation(description: "testGet_noResponse")
+
+        sut.get(endpoint: Endpoint.getImages(1)) { (result: Result<NasaResponse, NetworkError>) in
+            switch result {
+            case .success:
+                XCTFail()
+            case .failure(let error):
+                XCTAssertEqual(error, .noResponse)
+            }
+            exp.fulfill()
+        }
+
+        wait(for: [exp], timeout: 0.1)
+    }
+
+    func testGet_success() {
+
+        mockSession.loadJsonFile("collection")
+        let exp = expectation(description: "testGet_success")
+
+        sut.get(endpoint: Endpoint.getImages(1)) { (result: Result<NasaResponse, NetworkError>) in
+            switch result {
+            case .success(let response):
+                XCTAssertEqual(response.collection.items.count, 100)
+            case .failure(let error):
+                XCTFail(error.localizedDescription)
+            }
+            exp.fulfill()
+        }
 
         wait(for: [exp], timeout: 0.1)
     }

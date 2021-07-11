@@ -9,30 +9,58 @@ class NetworkClient {
         self.session = session ?? URLSession.shared
     }
 
-    func get<T: Decodable>(endpoint: EndpointProtocol) -> AnyPublisher<T, Error> {
+    func get<T: Decodable>(endpoint: EndpointProtocol, completion: @escaping (Result<T, NetworkError>) -> Void) {
         guard let url = endpoint.url else {
-            return Fail(error: NetworkError.invalidURL).eraseToAnyPublisher()
+            completion(.failure(.invalidURL))
+            return
         }
-        return session.dataTaskPublisher(for: url)
-            .mapError { error in NetworkError.networkError(error)}
-            .flatMap { data, response -> AnyPublisher<Data, Error> in
-                guard let response = response as? HTTPURLResponse else {
-                    return Fail(error: NetworkError.noResponse).eraseToAnyPublisher()
+
+        let request = URLRequest(url: url)
+        self.createTask(request: request) { result in
+            switch result {
+            case .success(let data):
+                do {
+                    let decoded = try JSONDecoder().decode(T.self, from: data)
+                    completion(.success(decoded))
+                } catch let DecodingError.dataCorrupted(context) {
+                    let errorMessage = "Data Corrupted Parsing Error: \(context)"
+                    return completion(.failure(.parsingError(errorMessage)))
+                } catch let DecodingError.keyNotFound(key, context) {
+                    let errorMessage = "Key '\(key)' not found: \(context.debugDescription)"
+                    return completion(.failure(.parsingError(errorMessage)))
+                } catch let DecodingError.valueNotFound(value, context) {
+                    let errorMessage = "Value '\(value)' not found: \(context.debugDescription)"
+                    return completion(.failure(.parsingError(errorMessage)))
+                } catch let DecodingError.typeMismatch(type, context) {
+                    let errorMessage = "Parsing Mismatch Error: Type '\(type)' mismatch: \(context.debugDescription)"
+                    return completion(.failure(.parsingError(errorMessage)))
+                } catch {
+                    return completion(.failure(.parsingError(error.localizedDescription)))
                 }
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+
+    fileprivate func createTask(request: URLRequest, completion: @escaping (Result<Data, NetworkError>) -> Void) {
+        let task = self.session.dataTask(with: request) { data, networkResponse, error in
+            if let response = networkResponse as? HTTPURLResponse,
+                let data = data {
                 switch response.statusCode {
                 case 200...299:
-                    return Just(data)
-                        .catch { _ in Empty().eraseToAnyPublisher() }
-                        .eraseToAnyPublisher()
+                    completion(.success(data))
                 case 400...499:
-                    return Fail(error: NetworkError.authenticationError).eraseToAnyPublisher()
+                    completion(.failure(NetworkError.authenticationError))
                 case 500...599:
-                    return Fail(error: NetworkError.serverError).eraseToAnyPublisher()
+                    completion(.failure(NetworkError.serverError))
                 default:
-                    return Fail(error: NetworkError.networkError(nil)).eraseToAnyPublisher()
+                    completion(.failure(NetworkError.networkError(error)))
                 }
+            } else {
+                completion(.failure(NetworkError.noResponse))
             }
-            .decode(type: T.self, decoder: JSONDecoder())
-            .eraseToAnyPublisher()
+        }
+        task.resume()
     }
 }
