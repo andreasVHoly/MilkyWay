@@ -15,27 +15,6 @@ class NasaImageDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureViewModel()
     }
 
-    private func configureViewModel() {
-        cancellables.forEach { $0.cancel() }
-        cancellables.removeAll()
-
-        let stateOutput = viewModel.getState()
-        stateOutput.sink { [unowned self] state in
-            self.configureUI(for: state)
-        }.store(in: &cancellables)
-    }
-
-    private func configureUI(for state: HomeViewState) {
-        switch state {
-        case .loading:
-        case .failure(error: let error):
-            // TODO: show error
-        case .success:
-            
-        }
-    }
 }
-
