@@ -5,7 +5,7 @@ class NasaResponseTests: XCTestCase {
 
     func testCreate() {
 
-        guard let json = readJSONData("collection") else {
+        guard let json = MockURLSession.loadJsonFile("collection") else {
             XCTFail("Failed to read json file")
             return
         }

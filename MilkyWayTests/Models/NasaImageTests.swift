@@ -5,7 +5,7 @@ class NasaImageTests: XCTestCase {
 
     func testCreate_noPhotographer() {
 
-        guard let json = readJSONData("image") else {
+        guard let json = MockURLSession.loadJsonFile("image") else {
             XCTFail("Failed to read json file")
             return
         }
@@ -25,7 +25,7 @@ class NasaImageTests: XCTestCase {
 
     func testCreate_noCreator() {
 
-        guard let json = readJSONData("image_photographer") else {
+        guard let json = MockURLSession.loadJsonFile("image_photographer") else {
             XCTFail("Failed to read json file")
             return
         }

@@ -15,11 +15,12 @@
 		E11D99082698D26200C67A98 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E11D99062698D26200C67A98 /* Home.storyboard */; };
 		E11D990A2698D26600C67A98 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E11D99092698D26600C67A98 /* Assets.xcassets */; };
 		E11D990D2698D26600C67A98 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E11D990B2698D26600C67A98 /* LaunchScreen.storyboard */; };
+		E11D99182698D26600C67A98 /* NetworkClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11D99172698D26600C67A98 /* NetworkClientTests.swift */; };
 		E11D99362698DA4500C67A98 /* Detail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E11D99352698DA4500C67A98 /* Detail.storyboard */; };
+		E11D99382698DAB100C67A98 /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11D99372698DAB100C67A98 /* NetworkClient.swift */; };
 		E11D993C2698DBD600C67A98 /* NasaImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11D993B2698DBD600C67A98 /* NasaImage.swift */; };
 		E11D993F2698E36A00C67A98 /* NasaResponseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11D993E2698E36A00C67A98 /* NasaResponseTests.swift */; };
 		E11D99442698E3BD00C67A98 /* collection.json in Resources */ = {isa = PBXBuildFile; fileRef = E11D99432698E3BD00C67A98 /* collection.json */; };
-		E11D99472698E41B00C67A98 /* JsonReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11D99462698E41B00C67A98 /* JsonReader.swift */; };
 		E11D99492698E5F200C67A98 /* NasaImageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11D99482698E5F200C67A98 /* NasaImageTests.swift */; };
 		E11D994B2698E61000C67A98 /* image.json in Resources */ = {isa = PBXBuildFile; fileRef = E11D994A2698E61000C67A98 /* image.json */; };
 		E11D994D2698ED0500C67A98 /* image_photographer.json in Resources */ = {isa = PBXBuildFile; fileRef = E11D994C2698ED0500C67A98 /* image_photographer.json */; };
@@ -27,12 +28,16 @@
 		E11D99512698EEA700C67A98 /* NasaResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11D99502698EEA700C67A98 /* NasaResponse.swift */; };
 		E11D99532698F1C600C67A98 /* Endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11D99522698F1C600C67A98 /* Endpoints.swift */; };
 		E11D99562698F67700C67A98 /* Bundle+getValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11D99552698F67700C67A98 /* Bundle+getValue.swift */; };
+		E11D99582698FAE500C67A98 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11D99572698FAE500C67A98 /* NetworkError.swift */; };
 		E11D995A269A095D00C67A98 /* EndpointTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11D9959269A095D00C67A98 /* EndpointTests.swift */; };
+		E11D9963269A104100C67A98 /* MockURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11D9962269A104100C67A98 /* MockURLSession.swift */; };
 		E11D9971269A23D100C67A98 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11D9970269A23D100C67A98 /* Colors.swift */; };
 		E11D9973269A23F200C67A98 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E11D9972269A23F200C67A98 /* Colors.xcassets */; };
 		E11D9976269A254A00C67A98 /* ColorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11D9975269A254900C67A98 /* ColorTests.swift */; };
 		E11D9983269A2E0C00C67A98 /* Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11D9982269A2E0C00C67A98 /* Formatter.swift */; };
 		E11D9986269A2FCF00C67A98 /* FormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11D9985269A2FCF00C67A98 /* FormatterTests.swift */; };
+		E11D998D269B092E00C67A98 /* TestableModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11D998C269B092E00C67A98 /* TestableModels.swift */; };
+		E11D998F269B0C2000C67A98 /* TestableNetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11D998E269B0C2000C67A98 /* TestableNetworkClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,12 +65,13 @@
 		E11D990C2698D26600C67A98 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E11D990E2698D26600C67A98 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E11D99132698D26600C67A98 /* MilkyWayTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MilkyWayTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E11D99172698D26600C67A98 /* NetworkClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClientTests.swift; sourceTree = "<group>"; };
 		E11D99192698D26600C67A98 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E11D99352698DA4500C67A98 /* Detail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Detail.storyboard; sourceTree = "<group>"; };
+		E11D99372698DAB100C67A98 /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
 		E11D993B2698DBD600C67A98 /* NasaImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NasaImage.swift; sourceTree = "<group>"; };
 		E11D993E2698E36A00C67A98 /* NasaResponseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NasaResponseTests.swift; sourceTree = "<group>"; };
 		E11D99432698E3BD00C67A98 /* collection.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = collection.json; sourceTree = "<group>"; };
-		E11D99462698E41B00C67A98 /* JsonReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonReader.swift; sourceTree = "<group>"; };
 		E11D99482698E5F200C67A98 /* NasaImageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NasaImageTests.swift; sourceTree = "<group>"; };
 		E11D994A2698E61000C67A98 /* image.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = image.json; sourceTree = "<group>"; };
 		E11D994C2698ED0500C67A98 /* image_photographer.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = image_photographer.json; sourceTree = "<group>"; };
@@ -73,12 +79,16 @@
 		E11D99502698EEA700C67A98 /* NasaResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NasaResponse.swift; sourceTree = "<group>"; };
 		E11D99522698F1C600C67A98 /* Endpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoints.swift; sourceTree = "<group>"; };
 		E11D99552698F67700C67A98 /* Bundle+getValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+getValue.swift"; sourceTree = "<group>"; };
+		E11D99572698FAE500C67A98 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		E11D9959269A095D00C67A98 /* EndpointTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointTests.swift; sourceTree = "<group>"; };
+		E11D9962269A104100C67A98 /* MockURLSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockURLSession.swift; sourceTree = "<group>"; };
 		E11D9970269A23D100C67A98 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		E11D9972269A23F200C67A98 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		E11D9975269A254900C67A98 /* ColorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorTests.swift; sourceTree = "<group>"; };
 		E11D9982269A2E0C00C67A98 /* Formatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatter.swift; sourceTree = "<group>"; };
 		E11D9985269A2FCF00C67A98 /* FormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatterTests.swift; sourceTree = "<group>"; };
+		E11D998C269B092E00C67A98 /* TestableModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestableModels.swift; sourceTree = "<group>"; };
+		E11D998E269B0C2000C67A98 /* TestableNetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestableNetworkClient.swift; sourceTree = "<group>"; };
 		EE9D3CDD823170A4A5D15219 /* Pods_MilkyWay.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MilkyWay.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -168,6 +178,7 @@
 				E11D99402698E38F00C67A98 /* Json */,
 				E11D993D2698E35E00C67A98 /* Models */,
 				E11D99392698DAC000C67A98 /* Network */,
+				E11D9961269A103400C67A98 /* Testables */,
 				E11D99192698D26600C67A98 /* Info.plist */,
 			);
 			path = MilkyWayTests;
@@ -204,7 +215,9 @@
 		E11D99342698DA1E00C67A98 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				E11D99372698DAB100C67A98 /* NetworkClient.swift */,
 				E11D99522698F1C600C67A98 /* Endpoints.swift */,
+				E11D99572698FAE500C67A98 /* NetworkError.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -212,6 +225,7 @@
 		E11D99392698DAC000C67A98 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				E11D99172698D26600C67A98 /* NetworkClientTests.swift */,
 				E11D9959269A095D00C67A98 /* EndpointTests.swift */,
 			);
 			path = Network;
@@ -238,7 +252,6 @@
 		E11D99402698E38F00C67A98 /* Json */ = {
 			isa = PBXGroup;
 			children = (
-				E11D99462698E41B00C67A98 /* JsonReader.swift */,
 				E11D99432698E3BD00C67A98 /* collection.json */,
 				E11D994A2698E61000C67A98 /* image.json */,
 				E11D994C2698ED0500C67A98 /* image_photographer.json */,
@@ -252,6 +265,16 @@
 				E11D99552698F67700C67A98 /* Bundle+getValue.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		E11D9961269A103400C67A98 /* Testables */ = {
+			isa = PBXGroup;
+			children = (
+				E11D9962269A104100C67A98 /* MockURLSession.swift */,
+				E11D998C269B092E00C67A98 /* TestableModels.swift */,
+				E11D998E269B0C2000C67A98 /* TestableNetworkClient.swift */,
+			);
+			path = Testables;
 			sourceTree = "<group>";
 		};
 		E11D996F269A23C600C67A98 /* Theme */ = {
@@ -468,8 +491,10 @@
 				E11D99512698EEA700C67A98 /* NasaResponse.swift in Sources */,
 				E11D99012698D26200C67A98 /* AppDelegate.swift in Sources */,
 				E11D993C2698DBD600C67A98 /* NasaImage.swift in Sources */,
+				E11D99582698FAE500C67A98 /* NetworkError.swift in Sources */,
 				E11D99032698D26200C67A98 /* SceneDelegate.swift in Sources */,
 				E11D9983269A2E0C00C67A98 /* Formatter.swift in Sources */,
+				E11D99382698DAB100C67A98 /* NetworkClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -479,10 +504,13 @@
 			files = (
 				E11D99492698E5F200C67A98 /* NasaImageTests.swift in Sources */,
 				E11D993F2698E36A00C67A98 /* NasaResponseTests.swift in Sources */,
-				E11D99472698E41B00C67A98 /* JsonReader.swift in Sources */,
+				E11D998F269B0C2000C67A98 /* TestableNetworkClient.swift in Sources */,
+				E11D9963269A104100C67A98 /* MockURLSession.swift in Sources */,
 				E11D995A269A095D00C67A98 /* EndpointTests.swift in Sources */,
 				E11D9976269A254A00C67A98 /* ColorTests.swift in Sources */,
+				E11D998D269B092E00C67A98 /* TestableModels.swift in Sources */,
 				E11D9986269A2FCF00C67A98 /* FormatterTests.swift in Sources */,
+				E11D99182698D26600C67A98 /* NetworkClientTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
