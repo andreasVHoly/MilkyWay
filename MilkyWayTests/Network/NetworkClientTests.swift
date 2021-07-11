@@ -29,10 +29,12 @@ class NetworkClientTests: XCTestCase {
                 return .success(value)
             }
             .catch { error -> AnyPublisher<Result<NasaResponse, Error>, Never> in
-                switch error as! NetworkError {
-                case .invalidURL:
-                    XCTAssertTrue(true)
-                default: XCTFail("Invalid error thrown ")
+                guard let error = error as? NetworkError,
+                      case NetworkError.invalidURL = error else {
+                    XCTFail("Invalid error thrown ")
+                    return Just(.failure(error))
+                        .catch { _ in Empty().eraseToAnyPublisher() }
+                        .eraseToAnyPublisher()
                 }
                 exp.fulfill()
                 return Just(.failure(error))
