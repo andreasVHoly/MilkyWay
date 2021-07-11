@@ -1,5 +1,4 @@
 import UIKit
-import Combine
 
 class HomeViewController: UIViewController {
 
@@ -59,5 +58,12 @@ class HomeViewController: UIViewController {
             homeCell.configure(with: imageVM)
         }
         return cell
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let vm = viewModel.getImageViewModel(at: indexPath) else { return }
+        let controller: NasaImageDetailViewController = Controller.imageDetail.create()
+        controller.viewModel = vm
+        self.navigationController?.pushViewController(controller, animated: true)
     }
  }
