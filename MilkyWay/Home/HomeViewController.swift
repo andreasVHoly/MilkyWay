@@ -6,43 +6,44 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var tableView: UITableView!
     private let viewModel: HomeViewModelable = HomeViewModel()
-    private var cancellables = Set<AnyCancellable>()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTableView()
-        configureViewModel()
+        refreshData()
     }
 
-    private func configureViewModel() {
-        cancellables.forEach { $0.cancel() }
-        cancellables.removeAll()
+    private func refreshData() {
+        activityIndicator.startAnimating()
+        viewModel.getImageData { error in
+            DispatchQueue.main.async { [weak self] in
+                self?.activityIndicator.stopAnimating()
+                if let error = error {
+                    self?.showError(error: error)
+                } else {
+                    self?.tableView.reloadData()
+                }
+            }
+        }
+    }
 
-        let stateOutput = viewModel.getImageData()
-        stateOutput.sink { [unowned self] state in
-            self.configureUI(for: state)
-        }.store(in: &cancellables)
+    private func showError(error: NetworkError) {
+        let alert = UIAlertController(title: "That didn't work!",
+                                      message: error.errorDescription,
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Retry", style: .default, handler: { [weak self] action in
+            switch action.style {
+            case .default:
+                self?.refreshData()
+            default: break
+            }
+        }))
+        self.present(alert, animated: true, completion: nil)
     }
 
     private func configureTableView() {
         tableView.register(cell: HomeTableViewCell.self)
         tableView.tableFooterView = UIView(frame: .zero)
-    }
-
-    private func configureUI(for state: HomeViewState) {
-        switch state {
-        case .loading:
-            activityIndicator.startAnimating()
-        case .empty:
-            // TODO: no results
-            activityIndicator.stopAnimating()
-        case .failure(error: let error):
-            activityIndicator.stopAnimating()
-            // TODO: show error
-        case .success:
-            activityIndicator.stopAnimating()
-            tableView.reloadData()
-        }
     }
 }
 
@@ -53,7 +54,8 @@ class HomeViewController: UIViewController {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "\(HomeTableViewCell.self)", for: indexPath)
-        if let imageVM = viewModel.getImageViewModel(at: indexPath), let homeCell = cell as? HomeTableViewCell {
+        if let imageVM = viewModel.getImageViewModel(at: indexPath),
+           let homeCell = cell as? HomeTableViewCell {
             homeCell.configure(with: imageVM)
         }
         return cell
