@@ -55,6 +55,7 @@
 		E11D9998269B528300C67A98 /* ImageClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11D9997269B528300C67A98 /* ImageClient.swift */; };
 		E11D999A269B56F300C67A98 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11D9999269B56F300C67A98 /* ImageLoader.swift */; };
 		E11D999C269B6B1C00C67A98 /* NasaImageDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11D999B269B6B1C00C67A98 /* NasaImageDetailViewController.swift */; };
+		E19E2ED1269B8EC2007E89B8 /* Storyboards.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19E2ED0269B8EC2007E89B8 /* Storyboards.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -123,6 +124,7 @@
 		E11D9997269B528300C67A98 /* ImageClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageClient.swift; sourceTree = "<group>"; };
 		E11D9999269B56F300C67A98 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		E11D999B269B6B1C00C67A98 /* NasaImageDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NasaImageDetailViewController.swift; sourceTree = "<group>"; };
+		E19E2ED0269B8EC2007E89B8 /* Storyboards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboards.swift; sourceTree = "<group>"; };
 		EE9D3CDD823170A4A5D15219 /* Pods_MilkyWay.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MilkyWay.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -190,6 +192,7 @@
 		E11D98FF2698D26200C67A98 /* MilkyWay */ = {
 			isa = PBXGroup;
 			children = (
+				E19E2ECF269B8EB6007E89B8 /* Routing */,
 				E11D9996269B527400C67A98 /* Image Loading */,
 				E11D9981269A2E0000C67A98 /* Utils */,
 				E11D996F269A23C600C67A98 /* Theme */,
@@ -238,7 +241,6 @@
 				E11D99062698D26200C67A98 /* Home.storyboard */,
 				E11D99042698D26200C67A98 /* HomeViewController.swift */,
 				E11D9964269A14B400C67A98 /* HomeViewModel.swift */,
-				E11D9990269B2CE600C67A98 /* NasaImageViewModel.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -248,6 +250,7 @@
 			children = (
 				E11D99352698DA4500C67A98 /* Detail.storyboard */,
 				E11D999B269B6B1C00C67A98 /* NasaImageDetailViewController.swift */,
+				E11D9990269B2CE600C67A98 /* NasaImageViewModel.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -382,6 +385,14 @@
 				E11D9999269B56F300C67A98 /* ImageLoader.swift */,
 			);
 			path = "Image Loading";
+			sourceTree = "<group>";
+		};
+		E19E2ECF269B8EB6007E89B8 /* Routing */ = {
+			isa = PBXGroup;
+			children = (
+				E19E2ED0269B8EC2007E89B8 /* Storyboards.swift */,
+			);
+			path = Routing;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -559,6 +570,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E19E2ED1269B8EC2007E89B8 /* Storyboards.swift in Sources */,
 				E11D99532698F1C600C67A98 /* Endpoints.swift in Sources */,
 				E11D9971269A23D100C67A98 /* Colors.swift in Sources */,
 				E11D9965269A14B400C67A98 /* HomeViewModel.swift in Sources */,

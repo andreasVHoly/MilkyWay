@@ -1,40 +1,35 @@
 import UIKit
-
-class NasaImageDetailViewModel {
-
-}
+import Combine
 
 class NasaImageDetailViewController: UIViewController {
 
+    @IBOutlet weak var labelStack: UIStackView!
     @IBOutlet weak var titleLabel: ImageTitleLabel!
     @IBOutlet weak var subTitle: ImageSubtitleLabel!
     @IBOutlet weak var descriptionLabel: ImageDescriptionLabel!
-    @IBOutlet weak var image: UIImageView!
+    @IBOutlet weak var image: UIImageView! {
+        didSet {
+            image.image = UIImage(color: UIColor(color: .loading),
+                                  size: image.frame.size)
+        }
+    }
+    private var cancellable: AnyCancellable?
 
-    private var viewModel: NasaImageDetailViewModel!
+    var viewModel: NasaImageViewModel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureViewModel()
+        configureView()
     }
 
-    private func configureViewModel() {
-        cancellables.forEach { $0.cancel() }
-        cancellables.removeAll()
-
-        let stateOutput = viewModel.getState()
-        stateOutput.sink { [unowned self] state in
-            self.configureUI(for: state)
-        }.store(in: &cancellables)
-    }
-
-    private func configureUI(for state: HomeViewState) {
-        switch state {
-        case .loading:
-        case .failure(error: let error):
-            // TODO: show error
-        case .success:
-            
+    private func configureView() {
+        self.navigationItem.largeTitleDisplayMode = .never
+        labelStack.setCustomSpacing(24, after: subTitle)
+        titleLabel.text = viewModel.title
+        subTitle.text = viewModel.subTitle
+        descriptionLabel.text = viewModel.description
+        cancellable = viewModel.image.sink { image in
+            self.image.image = image
         }
     }
 }
