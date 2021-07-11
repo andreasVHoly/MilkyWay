@@ -5,6 +5,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var tableView: UITableView!
     private let viewModel: HomeViewModelable = HomeViewModel()
+    private let refreshControl = UIRefreshControl()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -12,11 +13,12 @@ class HomeViewController: UIViewController {
         refreshData()
     }
 
-    private func refreshData() {
+    @objc private func refreshData() {
         activityIndicator.startAnimating()
         viewModel.getImageData { error in
             DispatchQueue.main.async { [weak self] in
                 self?.activityIndicator.stopAnimating()
+                self?.refreshControl.endRefreshing()
                 if let error = error {
                     self?.showError(error: error)
                 } else {
@@ -24,6 +26,13 @@ class HomeViewController: UIViewController {
                 }
             }
         }
+    }
+
+    private func configureTableView() {
+        tableView.refreshControl = refreshControl
+        tableView.register(cell: HomeTableViewCell.self)
+        tableView.tableFooterView = UIView(frame: .zero)
+        refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
     }
 
     private func showError(error: NetworkError) {
@@ -38,11 +47,6 @@ class HomeViewController: UIViewController {
             }
         }))
         self.present(alert, animated: true, completion: nil)
-    }
-
-    private func configureTableView() {
-        tableView.register(cell: HomeTableViewCell.self)
-        tableView.tableFooterView = UIView(frame: .zero)
     }
 }
 

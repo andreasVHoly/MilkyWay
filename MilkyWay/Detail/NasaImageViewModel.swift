@@ -1,6 +1,4 @@
 import Foundation
-import Combine
-import UIKit.UIImage
 
 struct NasaImageViewModel {
     let title, subTitle, description, imageUrl: String
