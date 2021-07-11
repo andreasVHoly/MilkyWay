@@ -6,6 +6,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     private let viewModel: HomeViewModelable = HomeViewModel()
     private var cancellables = Set<AnyCancellable>()
+    private let refreshControl = UIRefreshControl()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +22,43 @@ class HomeViewController: UIViewController {
         stateOutput.sink { [unowned self] state in
             self.configureUI(for: state)
         }.store(in: &cancellables)
+        refreshData()
+    }
+
+    @objc private func refreshData() {
+        activityIndicator.startAnimating()
+        viewModel.getImageData { error in
+            DispatchQueue.main.async { [weak self] in
+                self?.activityIndicator.stopAnimating()
+                self?.refreshControl.endRefreshing()
+                if let error = error {
+                    self?.showError(error: error)
+                } else {
+                    self?.tableView.reloadData()
+                }
+            }
+        }
+    }
+
+    private func configureTableView() {
+        tableView.refreshControl = refreshControl
+        tableView.register(cell: HomeTableViewCell.self)
+        tableView.tableFooterView = UIView(frame: .zero)
+        refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
+    }
+
+    private func showError(error: NetworkError) {
+        let alert = UIAlertController(title: "That didn't work!",
+                                      message: error.errorDescription,
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Retry", style: .default, handler: { [weak self] action in
+            switch action.style {
+            case .default:
+                self?.refreshData()
+            default: break
+            }
+        }))
+        self.present(alert, animated: true, completion: nil)
     }
 
     private func configureTableView() {
