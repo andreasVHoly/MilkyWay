@@ -1,25 +1,99 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17150" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17122"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Nasa Image Detail View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController id="Y6W-OH-hqX" sceneMemberID="viewController">
+                <viewController id="Y6W-OH-hqX" customClass="NasaImageDetailViewController" customModule="MilkyWay" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fx8-Ga-aQZ">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3T0-UU-XeG" userLabel="Content View">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="363.5"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xZg-W7-Gbi">
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="254"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="xZg-W7-Gbi" secondAttribute="height" multiplier="375:230" id="lrE-k8-hYA"/>
+                                                </constraints>
+                                            </imageView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Zfz-wb-ekN">
+                                                <rect key="frame" x="16" y="278" width="382" height="61.5"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u5D-J8-wAe" customClass="ImageTitleLabel" customModule="MilkyWay" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="382" height="20.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zhv-l4-OHa" customClass="ImageSubtitleLabel" customModule="MilkyWay" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="20.5" width="382" height="20.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CKW-dy-ol9" customClass="ImageDescriptionLabel" customModule="MilkyWay" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="41" width="382" height="20.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="xZg-W7-Gbi" secondAttribute="trailing" id="Llw-Ak-bhy"/>
+                                            <constraint firstItem="xZg-W7-Gbi" firstAttribute="top" secondItem="3T0-UU-XeG" secondAttribute="top" id="UHp-RB-bZ7"/>
+                                            <constraint firstItem="Zfz-wb-ekN" firstAttribute="top" secondItem="xZg-W7-Gbi" secondAttribute="bottom" constant="24" id="hrg-gS-9am"/>
+                                            <constraint firstItem="xZg-W7-Gbi" firstAttribute="leading" secondItem="3T0-UU-XeG" secondAttribute="leading" id="ibt-0T-RHA"/>
+                                            <constraint firstItem="Zfz-wb-ekN" firstAttribute="leading" secondItem="3T0-UU-XeG" secondAttribute="leading" constant="16" id="jbN-yb-n2g"/>
+                                            <constraint firstAttribute="bottom" secondItem="Zfz-wb-ekN" secondAttribute="bottom" constant="24" id="pht-Lg-D1f"/>
+                                            <constraint firstAttribute="trailing" secondItem="Zfz-wb-ekN" secondAttribute="trailing" constant="16" id="zSC-Uc-04F"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="3T0-UU-XeG" firstAttribute="top" secondItem="2B4-U7-lub" secondAttribute="top" id="Acq-48-wDE"/>
+                                    <constraint firstItem="3T0-UU-XeG" firstAttribute="trailing" secondItem="2B4-U7-lub" secondAttribute="trailing" id="DCJ-yB-xNC"/>
+                                    <constraint firstItem="3T0-UU-XeG" firstAttribute="width" secondItem="mQc-re-7xa" secondAttribute="width" id="Mfc-IY-VB0"/>
+                                    <constraint firstItem="2B4-U7-lub" firstAttribute="leading" secondItem="3T0-UU-XeG" secondAttribute="leading" id="OYA-Sq-GO2"/>
+                                    <constraint firstItem="3T0-UU-XeG" firstAttribute="bottom" secondItem="2B4-U7-lub" secondAttribute="bottom" id="Zem-LN-YDY"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="2B4-U7-lub"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="mQc-re-7xa"/>
+                            </scrollView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="fx8-Ga-aQZ" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="6yu-eL-5KU"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="fx8-Ga-aQZ" secondAttribute="bottom" id="Y8M-2H-7Wi"/>
+                            <constraint firstItem="fx8-Ga-aQZ" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="aDf-zM-gfI"/>
+                            <constraint firstItem="fx8-Ga-aQZ" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="uii-S4-cbh"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="descriptionLabel" destination="CKW-dy-ol9" id="8RD-OX-dyW"/>
+                        <outlet property="image" destination="xZg-W7-Gbi" id="BDr-MJ-gyv"/>
+                        <outlet property="subTitle" destination="Zhv-l4-OHa" id="eVx-Zy-Mlk"/>
+                        <outlet property="titleLabel" destination="u5D-J8-wAe" id="BYv-vQ-ALa"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="100.00000000000001" y="118.52678571428571"/>
         </scene>
     </scenes>
     <resources>

@@ -54,6 +54,7 @@
 		E11D9995269B4BA800C67A98 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11D9994269B4BA800C67A98 /* ImageCache.swift */; };
 		E11D9998269B528300C67A98 /* ImageClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11D9997269B528300C67A98 /* ImageClient.swift */; };
 		E11D999A269B56F300C67A98 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11D9999269B56F300C67A98 /* ImageLoader.swift */; };
+		E11D999C269B6B1C00C67A98 /* NasaImageDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11D999B269B6B1C00C67A98 /* NasaImageDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -121,6 +122,7 @@
 		E11D9994269B4BA800C67A98 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		E11D9997269B528300C67A98 /* ImageClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageClient.swift; sourceTree = "<group>"; };
 		E11D9999269B56F300C67A98 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
+		E11D999B269B6B1C00C67A98 /* NasaImageDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NasaImageDetailViewController.swift; sourceTree = "<group>"; };
 		EE9D3CDD823170A4A5D15219 /* Pods_MilkyWay.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MilkyWay.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -245,6 +247,7 @@
 			isa = PBXGroup;
 			children = (
 				E11D99352698DA4500C67A98 /* Detail.storyboard */,
+				E11D999B269B6B1C00C67A98 /* NasaImageDetailViewController.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -572,6 +575,7 @@
 				E11D99012698D26200C67A98 /* AppDelegate.swift in Sources */,
 				E11D9991269B2CE700C67A98 /* NasaImageViewModel.swift in Sources */,
 				E11D993C2698DBD600C67A98 /* NasaImage.swift in Sources */,
+				E11D999C269B6B1C00C67A98 /* NasaImageDetailViewController.swift in Sources */,
 				E11D999A269B56F300C67A98 /* ImageLoader.swift in Sources */,
 				E11D99582698FAE500C67A98 /* NetworkError.swift in Sources */,
 				E11D99032698D26200C67A98 /* SceneDelegate.swift in Sources */,
