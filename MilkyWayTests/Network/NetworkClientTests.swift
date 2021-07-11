@@ -47,9 +47,4 @@ class NetworkClientTests: XCTestCase {
 
         wait(for: [exp], timeout: 0.1)
     }
-
-    func testRestOfClass() {
-
-        // TODO: how to mock URLSesssion dataTaskPublisher method?
-    }
 }

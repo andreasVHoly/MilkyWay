@@ -33,9 +33,11 @@ class HomeViewModel: HomeViewModelable {
     private var cancellables = Set<AnyCancellable>()
     private var images = [NasaImageViewModel]()
     private let api: API
+    private let imageLoader: ImageLoadable
 
-    init(api: API? = nil) {
+    init(api: API? = nil, imageLoader: ImageLoadable? = nil) {
         self.api = api ?? MilkyAPI()
+        self.imageLoader = imageLoader ?? ImageLoader()
     }
 
     var rows: Int {
@@ -53,12 +55,14 @@ class HomeViewModel: HomeViewModelable {
 
         let defaultState: HomeOutput = Just(.loading).eraseToAnyPublisher()
         let apiState = api.getImages(page: 1)
-            .map { [weak self] result -> HomeViewState in
+            .map { [unowned self] result -> HomeViewState in
                 switch result {
                 case .success(let response) where response.collection.items.isEmpty:
                     return .empty
                 case .success(let response):
-                    self?.images = response.collection.items.compactMap { NasaImageViewModel(model: $0) }
+                    self.images = response.collection.items.compactMap { [unowned self] model in
+                        NasaImageViewModel(model: model,
+                                           image: self.imageLoader.downloadImage(from: model.links.first?.imageUrl)) }
                     return .success
                 case .failure(let error):
                     return .failure(error: error)
