@@ -28,7 +28,7 @@ extension NasaImage {
         NasaImage(data: [NasaImageData(title: "Test2",
                                   description: "Test description2",
                                   dateCreated: "2021-08-11T15:00:00Z",
-                                  creator: "Tester",
+                                  creator: "Test Creator",
                                   photographer: nil)],
                   links: [NasaImageLink(imageUrl: "https://test2.com")]
         )

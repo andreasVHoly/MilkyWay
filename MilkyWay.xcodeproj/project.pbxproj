@@ -44,6 +44,7 @@
 		E11D998D269B092E00C67A98 /* TestableModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11D998C269B092E00C67A98 /* TestableModels.swift */; };
 		E11D998F269B0C2000C67A98 /* TestableNetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11D998E269B0C2000C67A98 /* TestableNetworkClient.swift */; };
 		E11D9991269B2CE700C67A98 /* NasaImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11D9990269B2CE600C67A98 /* NasaImageViewModel.swift */; };
+		E11D9993269B482A00C67A98 /* NasaImageViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11D9992269B482A00C67A98 /* NasaImageViewModelTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,6 +102,7 @@
 		E11D998C269B092E00C67A98 /* TestableModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestableModels.swift; sourceTree = "<group>"; };
 		E11D998E269B0C2000C67A98 /* TestableNetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestableNetworkClient.swift; sourceTree = "<group>"; };
 		E11D9990269B2CE600C67A98 /* NasaImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NasaImageViewModel.swift; sourceTree = "<group>"; };
+		E11D9992269B482A00C67A98 /* NasaImageViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NasaImageViewModelTests.swift; sourceTree = "<group>"; };
 		EE9D3CDD823170A4A5D15219 /* Pods_MilkyWay.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MilkyWay.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -332,6 +334,7 @@
 			isa = PBXGroup;
 			children = (
 				E11D998A269B06F700C67A98 /* HomeViewModelTests.swift */,
+				E11D9992269B482A00C67A98 /* NasaImageViewModelTests.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -536,6 +539,7 @@
 				E11D993F2698E36A00C67A98 /* NasaResponseTests.swift in Sources */,
 				E11D998F269B0C2000C67A98 /* TestableNetworkClient.swift in Sources */,
 				E11D9963269A104100C67A98 /* MockURLSession.swift in Sources */,
+				E11D9993269B482A00C67A98 /* NasaImageViewModelTests.swift in Sources */,
 				E11D995A269A095D00C67A98 /* EndpointTests.swift in Sources */,
 				E11D998B269B06F700C67A98 /* HomeViewModelTests.swift in Sources */,
 				E11D9976269A254A00C67A98 /* ColorTests.swift in Sources */,
