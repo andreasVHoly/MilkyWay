@@ -1,11 +1,13 @@
 {
   "images" : [
     {
+      "filename" : "milkyway-122.jpg",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "20x20"
     },
     {
+      "filename" : "milkyway-121.jpg",
       "idiom" : "iphone",
       "scale" : "3x",
       "size" : "20x20"
@@ -21,21 +23,25 @@
       "size" : "29x29"
     },
     {
+      "filename" : "milkyway-125.jpg",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "40x40"
     },
     {
+      "filename" : "milkyway-127.jpg",
       "idiom" : "iphone",
       "scale" : "3x",
       "size" : "40x40"
     },
     {
+      "filename" : "milkyway-120.jpg",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "60x60"
     },
     {
+      "filename" : "milkyway-128.jpg",
       "idiom" : "iphone",
       "scale" : "3x",
       "size" : "60x60"
@@ -51,11 +57,13 @@
       "size" : "20x20"
     },
     {
+      "filename" : "milkyway-123.jpg",
       "idiom" : "ipad",
       "scale" : "1x",
       "size" : "29x29"
     },
     {
+      "filename" : "milkyway-124.jpg",
       "idiom" : "ipad",
       "scale" : "2x",
       "size" : "29x29"
