@@ -23,8 +23,9 @@ class HomeViewModelTests: XCTestCase {
     func test_getImageData_success() {
 
         let exp = expectation(description: "test_getImageData_success")
+        let input = PassthroughSubject<Void, Never>()
 
-        sut.getImageData().sink { state in
+        sut.getData(input.eraseToAnyPublisher()).sink { state in
             guard case HomeViewState.success = state else { return }
             XCTAssertEqual(self.sut.rows, 2)
             XCTAssertNotNil(self.sut.getImageViewModel(at: IndexPath(row: 0, section: 0)))
@@ -38,8 +39,9 @@ class HomeViewModelTests: XCTestCase {
 
         mockAPI.response = NasaResponse(collection: NasaCollection(items: []))
         let exp = expectation(description: "test_getImageData_successEmpty")
+        let input = PassthroughSubject<Void, Never>()
 
-        sut.getImageData().sink { state in
+        sut.getData(input.eraseToAnyPublisher()).sink { state in
             guard case HomeViewState.empty = state else { return }
             XCTAssertEqual(self.sut.rows, 0)
             XCTAssertNil(self.sut.getImageViewModel(at: IndexPath(row: 0, section: 0)))
@@ -53,8 +55,9 @@ class HomeViewModelTests: XCTestCase {
 
         mockAPI.error = NetworkError.serverError
         let exp = expectation(description: "test_getImageData_error")
+        let input = PassthroughSubject<Void, Never>()
 
-        sut.getImageData().sink { state in
+        sut.getData(input.eraseToAnyPublisher()).sink { state in
             guard case HomeViewState.failure = state else { return }
             XCTAssertEqual(self.sut.rows, 0)
             XCTAssertNil(self.sut.getImageViewModel(at: IndexPath(row: 0, section: 0)))

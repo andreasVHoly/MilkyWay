@@ -3,7 +3,7 @@ import Combine
 
 class TestableAPI: API {
 
-    var error: Error?
+    var error: NetworkError?
     var response = NasaResponse.testable()
 
     func getImages(page: Int) -> ImageResponse {
