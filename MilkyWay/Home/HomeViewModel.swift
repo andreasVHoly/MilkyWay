@@ -1,30 +1,12 @@
 import Foundation
+import Combine
 
 typealias HomeOutput = AnyPublisher<HomeViewState, Never>
-
-enum HomeViewState {
-    case loading
-    case success
-    case empty
-    case failure(error: Error)
-}
-
-extension HomeViewState: Equatable {
-    static func == (lhs: HomeViewState, rhs: HomeViewState) -> Bool {
-        switch (lhs, rhs) {
-        case (.loading, .loading): return true
-        case (.success, .success): return true
-        case (.empty, .empty): return true
-        case (.failure, .failure): return true
-        default: return false
-        }
-    }
-}
 
 protocol HomeViewModelable {
     var rows: Int { get }
     func getImageViewModel(at indexPath: IndexPath) -> NasaImageViewModel?
-    func getImageData() -> HomeOutput
+    func getData(_ call: AnyPublisher<Void, Never>) -> HomeOutput
 }
 
 class HomeViewModel: HomeViewModelable {
@@ -48,11 +30,12 @@ class HomeViewModel: HomeViewModelable {
         return images[indexPath.row]
     }
 
-    func getImageData() -> HomeOutput {
+    func getData(_ call: AnyPublisher<Void, Never>) -> HomeOutput {
         cancellables.forEach { $0.cancel() }
         cancellables.removeAll()
 
         let defaultState: HomeOutput = Just(.loading).eraseToAnyPublisher()
+
         let apiState = api.getImages(page: 1)
             .map { [unowned self] result -> HomeViewState in
                 switch result {

@@ -1,7 +1,7 @@
 import Foundation
 import Combine
 
-typealias ImageResponse = AnyPublisher<Result<NasaResponse, Error>, Never>
+typealias ImageResponse = AnyPublisher<Result<NasaResponse, NetworkError>, Never>
 
 protocol API {
     func getImages(page: Int) -> ImageResponse
@@ -19,7 +19,7 @@ class MilkyAPI: API {
         return networkClient.get(endpoint: Endpoint.getImages(page))
             .map { .success($0) }
             .catch { error -> ImageResponse in
-                return Just(.failure(error))
+                return Just(.failure(error as? NetworkError ?? .noResponse))
                     .catch { _ in Empty().eraseToAnyPublisher() }
                     .eraseToAnyPublisher()
             }

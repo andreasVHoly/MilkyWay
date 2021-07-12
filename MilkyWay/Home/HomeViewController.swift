@@ -1,4 +1,5 @@
 import UIKit
+import Combine
 
 class HomeViewController: UIViewController {
 
@@ -7,6 +8,7 @@ class HomeViewController: UIViewController {
     private let viewModel: HomeViewModelable = HomeViewModel()
     private var cancellables = Set<AnyCancellable>()
     private let refreshControl = UIRefreshControl()
+    private let getData = PassthroughSubject<Void, Never>()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,37 +20,22 @@ class HomeViewController: UIViewController {
         cancellables.forEach { $0.cancel() }
         cancellables.removeAll()
 
-        let stateOutput = viewModel.getImageData()
+        let stateOutput = viewModel.getData(getData.eraseToAnyPublisher())
         stateOutput.sink { [unowned self] state in
             self.configureUI(for: state)
         }.store(in: &cancellables)
-        refreshData()
-    }
-
-    @objc private func refreshData() {
-        activityIndicator.startAnimating()
-        viewModel.getImageData { error in
-            DispatchQueue.main.async { [weak self] in
-                self?.activityIndicator.stopAnimating()
-                self?.refreshControl.endRefreshing()
-                if let error = error {
-                    self?.showError(error: error)
-                } else {
-                    if self?.viewModel.rows == 0 {
-                        self?.showError(error: .noResults)
-                    } else {
-                        self?.tableView.reloadData()
-                    }
-                }
-            }
-        }
     }
 
     private func configureTableView() {
         tableView.refreshControl = refreshControl
         tableView.register(cell: HomeTableViewCell.self)
         tableView.tableFooterView = UIView(frame: .zero)
-        refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
+        refreshControl.addTarget(self, action: #selector(pulledToRefresh), for: .valueChanged)
+    }
+
+    @objc
+    private func pulledToRefresh() {
+        getData.send()
     }
 
     private func showError(error: NetworkError) {
@@ -56,17 +43,12 @@ class HomeViewController: UIViewController {
                                       message: error.errorDescription,
                                       preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Retry", style: .default, handler: { [weak self] _ in
-            self?.refreshData()
+            self?.getData.send()
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { _ in
             alert.dismiss(animated: true)
         }))
-        self.present(alert, animated: true, completion: nil)
-    }
-
-    private func configureTableView() {
-        tableView.register(cell: HomeTableViewCell.self)
-        tableView.tableFooterView = UIView(frame: .zero)
+        self.present(alert, animated: true)
     }
 
     private func configureUI(for state: HomeViewState) {
@@ -74,13 +56,16 @@ class HomeViewController: UIViewController {
         case .loading:
             activityIndicator.startAnimating()
         case .empty:
-            // TODO: no results
             activityIndicator.stopAnimating()
+            refreshControl.endRefreshing()
+            showError(error: .noResults)
         case .failure(error: let error):
             activityIndicator.stopAnimating()
-            // TODO: show error
+            refreshControl.endRefreshing()
+            showError(error: error)
         case .success:
             activityIndicator.stopAnimating()
+            refreshControl.endRefreshing()
             tableView.reloadData()
         }
     }

@@ -55,6 +55,7 @@
 		E11D999A269B56F300C67A98 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11D9999269B56F300C67A98 /* ImageLoader.swift */; };
 		E11D999C269B6B1C00C67A98 /* NasaImageDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11D999B269B6B1C00C67A98 /* NasaImageDetailViewController.swift */; };
 		E19E2ED1269B8EC2007E89B8 /* Storyboards.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19E2ED0269B8EC2007E89B8 /* Storyboards.swift */; };
+		E1B2A03D269C9B29009EDE74 /* HomeViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B2A03C269C9B29009EDE74 /* HomeViewState.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -125,6 +126,7 @@
 		E11D999B269B6B1C00C67A98 /* NasaImageDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NasaImageDetailViewController.swift; sourceTree = "<group>"; };
 		E19E2ED0269B8EC2007E89B8 /* Storyboards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboards.swift; sourceTree = "<group>"; };
 		E1B2A03A269C6E07009EDE74 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		E1B2A03C269C9B29009EDE74 /* HomeViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewState.swift; sourceTree = "<group>"; };
 		EE9D3CDD823170A4A5D15219 /* Pods_MilkyWay.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MilkyWay.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -241,6 +243,7 @@
 				E11D99062698D26200C67A98 /* Home.storyboard */,
 				E11D99042698D26200C67A98 /* HomeViewController.swift */,
 				E11D9964269A14B400C67A98 /* HomeViewModel.swift */,
+				E1B2A03C269C9B29009EDE74 /* HomeViewState.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -586,6 +589,7 @@
 				E11D9980269A28F500C67A98 /* UITableView+registerNib.swift in Sources */,
 				E11D9983269A2E0C00C67A98 /* Formatter.swift in Sources */,
 				E11D99382698DAB100C67A98 /* NetworkClient.swift in Sources */,
+				E1B2A03D269C9B29009EDE74 /* HomeViewState.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
