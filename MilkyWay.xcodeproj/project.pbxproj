@@ -24,7 +24,6 @@
 		E11D99492698E5F200C67A98 /* NasaImageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11D99482698E5F200C67A98 /* NasaImageTests.swift */; };
 		E11D994B2698E61000C67A98 /* image.json in Resources */ = {isa = PBXBuildFile; fileRef = E11D994A2698E61000C67A98 /* image.json */; };
 		E11D994D2698ED0500C67A98 /* image_photographer.json in Resources */ = {isa = PBXBuildFile; fileRef = E11D994C2698ED0500C67A98 /* image_photographer.json */; };
-		E11D994F2698EDDD00C67A98 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = E11D994E2698EDDD00C67A98 /* .swiftlint.yml */; };
 		E11D99512698EEA700C67A98 /* NasaResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11D99502698EEA700C67A98 /* NasaResponse.swift */; };
 		E11D99532698F1C600C67A98 /* Endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11D99522698F1C600C67A98 /* Endpoints.swift */; };
 		E11D99562698F67700C67A98 /* Bundle+getValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11D99552698F67700C67A98 /* Bundle+getValue.swift */; };
@@ -125,6 +124,7 @@
 		E11D9999269B56F300C67A98 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		E11D999B269B6B1C00C67A98 /* NasaImageDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NasaImageDetailViewController.swift; sourceTree = "<group>"; };
 		E19E2ED0269B8EC2007E89B8 /* Storyboards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboards.swift; sourceTree = "<group>"; };
+		E1B2A03A269C6E07009EDE74 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		EE9D3CDD823170A4A5D15219 /* Pods_MilkyWay.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MilkyWay.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -171,6 +171,7 @@
 		E11D98F42698D26200C67A98 = {
 			isa = PBXGroup;
 			children = (
+				E1B2A03A269C6E07009EDE74 /* README.md */,
 				E11D994E2698EDDD00C67A98 /* .swiftlint.yml */,
 				E11D98FF2698D26200C67A98 /* MilkyWay */,
 				E11D99162698D26600C67A98 /* MilkyWayTests */,
@@ -192,7 +193,6 @@
 		E11D98FF2698D26200C67A98 /* MilkyWay */ = {
 			isa = PBXGroup;
 			children = (
-				E19E2ECF269B8EB6007E89B8 /* Routing */,
 				E11D9996269B527400C67A98 /* Image Loading */,
 				E11D9981269A2E0000C67A98 /* Utils */,
 				E11D996F269A23C600C67A98 /* Theme */,
@@ -355,6 +355,7 @@
 		E11D9981269A2E0000C67A98 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				E19E2ED0269B8EC2007E89B8 /* Storyboards.swift */,
 				E11D9982269A2E0C00C67A98 /* Formatter.swift */,
 			);
 			path = Utils;
@@ -385,14 +386,6 @@
 				E11D9999269B56F300C67A98 /* ImageLoader.swift */,
 			);
 			path = "Image Loading";
-			sourceTree = "<group>";
-		};
-		E19E2ECF269B8EB6007E89B8 /* Routing */ = {
-			isa = PBXGroup;
-			children = (
-				E19E2ED0269B8EC2007E89B8 /* Storyboards.swift */,
-			);
-			path = Routing;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -478,7 +471,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E11D994F2698EDDD00C67A98 /* .swiftlint.yml in Resources */,
 				E11D997E269A285F00C67A98 /* HomeTableViewCell.xib in Resources */,
 				E11D990D2698D26600C67A98 /* LaunchScreen.storyboard in Resources */,
 				E11D990A2698D26600C67A98 /* Assets.xcassets in Resources */,
