@@ -22,7 +22,11 @@ class HomeViewController: UIViewController {
                 if let error = error {
                     self?.showError(error: error)
                 } else {
-                    self?.tableView.reloadData()
+                    if self?.viewModel.rows == 0 {
+                        self?.showError(error: .noResults)
+                    } else {
+                        self?.tableView.reloadData()
+                    }
                 }
             }
         }
@@ -39,12 +43,11 @@ class HomeViewController: UIViewController {
         let alert = UIAlertController(title: "That didn't work!",
                                       message: error.errorDescription,
                                       preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Retry", style: .default, handler: { [weak self] action in
-            switch action.style {
-            case .default:
-                self?.refreshData()
-            default: break
-            }
+        alert.addAction(UIAlertAction(title: "Retry", style: .default, handler: { [weak self] _ in
+            self?.refreshData()
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { _ in
+            alert.dismiss(animated: true)
         }))
         self.present(alert, animated: true, completion: nil)
     }
