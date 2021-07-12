@@ -74,7 +74,7 @@
 		88CC2F8DEFE7E51AA37F4C0E /* Pods-MilkyWay.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MilkyWay.release.xcconfig"; path = "Target Support Files/Pods-MilkyWay/Pods-MilkyWay.release.xcconfig"; sourceTree = "<group>"; };
 		B0F2FFD1FC47E32AEC2D42F1 /* Pods-MilkyWayTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MilkyWayTests.release.xcconfig"; path = "Target Support Files/Pods-MilkyWayTests/Pods-MilkyWayTests.release.xcconfig"; sourceTree = "<group>"; };
 		DE2DD047817A65FB86A28014 /* Pods-MilkyWayTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MilkyWayTests.debug.xcconfig"; path = "Target Support Files/Pods-MilkyWayTests/Pods-MilkyWayTests.debug.xcconfig"; sourceTree = "<group>"; };
-		E11D98FD2698D26200C67A98 /* MilkyWay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MilkyWay.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E11D98FD2698D26200C67A98 /* MilkyWay Develop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MilkyWay Develop.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E11D99002698D26200C67A98 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E11D99022698D26200C67A98 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		E11D99042698D26200C67A98 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -183,7 +183,7 @@
 		E11D98FE2698D26200C67A98 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E11D98FD2698D26200C67A98 /* MilkyWay.app */,
+				E11D98FD2698D26200C67A98 /* MilkyWay Develop.app */,
 				E11D99132698D26600C67A98 /* MilkyWayTests.xctest */,
 			);
 			name = Products;
@@ -414,7 +414,7 @@
 			);
 			name = MilkyWay;
 			productName = MilkyWay;
-			productReference = E11D98FD2698D26200C67A98 /* MilkyWay.app */;
+			productReference = E11D98FD2698D26200C67A98 /* MilkyWay Develop.app */;
 			productType = "com.apple.product-type.application";
 		};
 		E11D99122698D26600C67A98 /* MilkyWayTests */ = {
@@ -777,8 +777,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = demo.MilkyWay;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = demo.MilkyWay.dev;
+				PRODUCT_NAME = "$(TARGET_NAME) Develop";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
