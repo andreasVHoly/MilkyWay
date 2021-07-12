@@ -34,4 +34,4 @@ One design decision that I changed from Figma was the Alert popup also has a Can
 
 ## Asset Attribution
 
-None of the design (App Icon & Launch Screen Icon) are mine, all credits go to (Karya Sore)[https://iconscout.com/contributors/karyasore]
+None of the design (App Icon & Launch Screen Icon) are mine, all credits go to [Karya Sore](https://iconscout.com/contributors/karyasore)
