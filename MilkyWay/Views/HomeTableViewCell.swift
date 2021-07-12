@@ -21,9 +21,6 @@ class HomeTableViewCell: UITableViewCell {
 
     func configure(with viewModel: NasaImageViewModel) {
         stopImageLoading()
-        let placeHolder = UIImage(color: UIColor(color: .loading),
-                                  size: cellImage.frame.size)
-        self.cellImage.image = placeHolder
         self.title.text = viewModel.title
         self.subTitle.text = viewModel.subTitle
         cancellable = viewModel.image.sink { [unowned self] image in

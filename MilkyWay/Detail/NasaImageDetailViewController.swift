@@ -7,12 +7,7 @@ class NasaImageDetailViewController: UIViewController {
     @IBOutlet weak var titleLabel: ImageTitleLabel!
     @IBOutlet weak var subTitle: ImageSubtitleLabel!
     @IBOutlet weak var descriptionLabel: ImageDescriptionLabel!
-    @IBOutlet weak var image: UIImageView! {
-        didSet {
-            image.image = UIImage(color: UIColor(color: .loading),
-                                  size: image.frame.size)
-        }
-    }
+    @IBOutlet weak var image: UIImageView!
     private var cancellable: AnyCancellable?
 
     var viewModel: NasaImageViewModel!
