@@ -770,6 +770,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = demo.MilkyWay.dev;
+				PRODUCT_MODULE_NAME = MilkyWay;
 				PRODUCT_NAME = "$(TARGET_NAME) Develop";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -791,6 +792,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = demo.MilkyWay;
+				PRODUCT_MODULE_NAME = MilkyWay;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -815,7 +817,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MilkyWay.app/MilkyWay";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MilkyWay Develop.app/MilkyWay Develop";
 			};
 			name = Debug;
 		};
@@ -837,7 +839,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MilkyWay.app/MilkyWay";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MilkyWay Develop.app/MilkyWay Develop";
 			};
 			name = Release;
 		};
